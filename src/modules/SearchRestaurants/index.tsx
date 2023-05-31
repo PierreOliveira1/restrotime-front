@@ -1,6 +1,7 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { ApiError, fetchApi } from '@/lib/fetchApi';
 import * as Styles from './styles';
+import ComboBox from './components/ui/Combobox';
 interface Restaurant {
 	id: number;
 	name: string;
@@ -38,14 +39,12 @@ function Restaurants() {
 				</Styles.TitleContent>
 
 				<Styles.SearchContent>
-					<div>
-						<Styles.SearchInput type="text" />
-						<ul>
-							{restaurants.map((restaurant: Restaurant) => (
-								<li key={restaurant.id}>{restaurant.name}</li>
-							))}
-						</ul>
-					</div>
+					<ComboBox
+						options={[{ label: '', value: '' }]}
+						onChange={(e) => {
+							console.log(e);
+						}}
+					/>
 					<Styles.SearchInputDate type="datetime-local" step="1" />
 					<Styles.ButtonLink>Buscar</Styles.ButtonLink>
 				</Styles.SearchContent>

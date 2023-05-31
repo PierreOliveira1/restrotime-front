@@ -13,13 +13,13 @@ export const TitleContent = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	margin-top: 50px;
 	margin-bottom: 20px;
 `;
 
 export const Title = styled.h2`
-	font-size: 2.5rem;
+	font-size: 2rem;
 	font-weight: 700;
 	color: #00bfa5;
 	padding: 0 20px;

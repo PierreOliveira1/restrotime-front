@@ -1,19 +1,17 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { InputHTMLAttributes } from 'react';
 import * as Styles from './styles';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
-	placeholder?: string;
-	register: UseFormRegisterReturn;
 }
 
 export function InputForm(props: Props) {
-	const { label, placeholder, register } = props;
+	const { label, ...rest } = props;
 
 	return (
 		<Styles.Container>
 			{label && <Styles.Label>{label}</Styles.Label>}
-			<Styles.InputForm placeholder={placeholder ?? ''} {...register} />
+			<Styles.InputForm {...rest} />
 		</Styles.Container>
 	);
 }

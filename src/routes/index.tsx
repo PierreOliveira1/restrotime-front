@@ -14,11 +14,11 @@ const routes = createBrowserRouter([
 				element: <Restaurants />,
 			},
 			{
-				path: '/restaurante/novo',
+				path: '/restaurante/:id',
 				element: <Restaurant />,
 			},
 			{
-				path: '/restaurants/search',
+				path: '/search',
 				element: <SearchRestaurants />,
 			},
 		],

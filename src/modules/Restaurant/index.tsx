@@ -2,12 +2,13 @@ import { useForm } from 'react-hook-form';
 import { InputForm } from './components/ui/Input';
 import { Button } from './components/ui/Button';
 import { useParams } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 
 import * as Styles from './styles';
 import { Restaurant as RestaurantType } from '../Restaurants/dto/restaurant';
 
 function Restaurant() {
-	const { register, handleSubmit } = useForm<RestaurantType>();
+	const { register, handleSubmit, setValue } = useForm<RestaurantType>();
 
 	const { id } = useParams();
 
@@ -47,12 +48,24 @@ function Restaurant() {
 		},
 	];
 
+	function formatCNPJ(cnpj: string) {
+		cnpj = cnpj.replace(/\D/g, '');
+		cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2');
+		cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+		cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2');
+		cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2');
+
+		return cnpj;
+	}
+
 	return (
 		<>
 			<Styles.Container>
 				<Styles.TitleContent>
 					<Styles.Title>
-						{id ? 'Editar Restaurante' : 'Adicionar novo restaurante'}
+						{id !== 'novo'
+							? 'Editar Restaurante'
+							: 'Adicionar novo restaurante'}
 					</Styles.Title>
 				</Styles.TitleContent>
 
@@ -60,32 +73,39 @@ function Restaurant() {
 					<InputForm
 						label="Nome"
 						placeholder="Digite o nome fantasia do restaurante..."
-						register={register('fantasyName', requiredInput)}
+						{...register('fantasyName', requiredInput)}
 					/>
 
 					<InputForm
 						label="Razão Social"
 						placeholder="Digite a razão social..."
-						register={register('corporateName', requiredInput)}
+						{...register('corporateName', requiredInput)}
 					/>
 
 					<InputForm
 						label="CNPJ"
 						placeholder="Digite o CNPJ..."
-						register={register('cnpj', requiredInput)}
+						{...register('cnpj', {
+							required: 'É obrigatório o preenchimento desse campo!',
+							pattern: {
+								value: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
+								message: 'É obrigatório o preenchimento desse campo!',
+							},
+							onChange: (e) => setValue('cnpj', formatCNPJ(e.target.value)),
+						})}
 					/>
 
 					<InputForm
 						label="Email"
 						placeholder="Digite o email..."
-						register={register('email', requiredInput)}
+						{...register('email', requiredInput)}
 					/>
 
 					<Styles.Wrapper>
 						<InputForm
 							label="Telefone"
 							placeholder="Digite o nome fantasia do restaurante..."
-							register={register('phoneNumber', requiredInput)}
+							{...register('phoneNumber', requiredInput)}
 						/>
 
 						<Styles.Wrapper style={{ flexDirection: 'column', gap: '5px' }}>
