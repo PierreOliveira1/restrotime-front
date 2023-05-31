@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Header } from '@/components/common/Header';
 import { Restaurants } from './Restaurants';
+import { Restaurant } from './Restaurant';
+import { SearchRestaurants } from './SearchRestaurants';
 
 const routes = createBrowserRouter([
 	{
@@ -10,6 +12,14 @@ const routes = createBrowserRouter([
 			{
 				path: '/',
 				element: <Restaurants />,
+			},
+			{
+				path: '/restaurante/novo',
+				element: <Restaurant />,
+			},
+			{
+				path: '/restaurants/search',
+				element: <SearchRestaurants />,
 			},
 		],
 	},
