@@ -12,7 +12,8 @@ export const Label = styled.label`
 `;
 
 export const InputForm = styled.input`
-	height: 25px;
+	width: 100%;
+	height: 35px;
 	border: 1px solid hsl(0, 0%, 46%);
 	border-radius: 5px;
 	padding: 2px 10px;
