@@ -8,21 +8,25 @@ export const Container = styled.div`
 	gap: 1rem;
 `;
 
-export const TitleContent = styled.div`
+export const TitleContent = styled.div<{
+	primary?: boolean;
+}>`
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: ${({ primary }) => (primary ? 'center' : 'flex-start')};
 	margin-top: 50px;
 	margin-bottom: 20px;
 `;
 
-export const Title = styled.h2`
-	font-size: 2rem;
+export const Title = styled.h2<{
+	primary?: boolean;
+}>`
+	font-size: ${({ primary }) => (primary ? '2rem' : '1.5rem')};
 	font-weight: 700;
 	color: #00bfa5;
-	padding: 0 20px;
+	padding: ${({ primary }) => (primary ? '0 20px' : '0')};
 
 	@media (max-width: 500px) {
 		font-size: 1.4rem;
@@ -30,7 +34,7 @@ export const Title = styled.h2`
 `;
 
 export const Form = styled.form`
-	width: 75%;
+	width: 90%;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -62,4 +66,46 @@ export const Option = styled.option`
 	&:select {
 		color: rgb(0, 191, 165);
 	}
+`;
+
+export const ContainerSchedules = styled.div`
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-row-gap: 1rem;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	overflow: auto;
+	justify-items: center;
+
+	@media (max-width: 1300px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: 1090px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 830px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 660px) {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(10, 1fr);
+	}
+`;
+
+export const ContentError = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+`;
+
+export const LabelError = styled.label`
+	color: red;
+	font-size: 0.8rem;
+	font-weight: 600;
 `;
