@@ -4,8 +4,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { ApiError, fetchApi } from '@/lib/fetchApi';
 import { CardRestaurant } from './components/common/CardRestaurant';
 import * as Styles from './styles';
-import { Data } from './dto/data';
-import { Restaurant } from './dto/restaurant';
+import { Data } from '../../dto/data';
+import { Restaurant } from '../../dto/restaurant';
 import { Pagination } from './components/common/Pagination';
 import { Loading } from '@/components/common/Loading';
 
