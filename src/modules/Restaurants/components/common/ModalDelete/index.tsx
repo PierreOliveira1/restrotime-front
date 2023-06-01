@@ -1,4 +1,4 @@
-import { Restaurant } from '@/modules/Restaurants/dto/restaurant';
+import { Restaurant } from '@/dto/restaurant';
 import FocusTrap from 'focus-trap-react';
 import * as Styles from './styles';
 import { useMutation, useQueryClient } from 'react-query';
