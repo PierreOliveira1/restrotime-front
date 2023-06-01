@@ -1,5 +1,16 @@
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import * as Styles from './styles';
 
-export function Button() {
-	return <Styles.Container type="submit" />;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+	width?: string;
+	marginTop?: string;
+	children: ReactNode;
+};
+
+export function Button({ children, width, marginTop, ...rest }: ButtonProps) {
+	return (
+		<Styles.Container width={width} marginTop={marginTop} {...rest}>
+			{children}
+		</Styles.Container>
+	);
 }
