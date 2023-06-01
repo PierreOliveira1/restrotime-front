@@ -22,7 +22,7 @@ export const SearchContent = styled.div`
 	display: flex;
 	width: 100%;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	margin-top: 50px;
 	margin-bottom: 20px;
@@ -35,10 +35,44 @@ export const SearchContent = styled.div`
 	}
 `;
 
-export const SearchInput = styled.input`
+export const ContainerInput = styled.div<{
+	focus: boolean;
+}>`
 	width: 70%;
-	height: 50px;
 	border: 1px solid #00bfa5;
+	color: #00bfa5;
+	border-radius: 5px;
+	padding: 0 20px;
+	font-size: 1rem;
+	font-weight: 700;
+	transition: all 1s ease-in-out;
+	outline: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+	ul {
+		${({ focus }) => (focus ? 'display: block;' : 'display: none;')}
+		transition: all 1s ease-in-out;
+
+		li {
+			list-style: none;
+			padding: 10px 0;
+			transition: all 1s ease-in-out;
+			cursor: pointer;
+		}
+	}
+
+	@media (max-width: 1025px) {
+		width: 35%;
+	}
+	@media (max-width: 769px) {
+		width: 100%;
+		padding: 0 5px;
+	}
+`;
+
+export const SearchInput = styled.input`
+	width: 100%;
+	height: 50px;
 	color: #00bfa5;
 	border-radius: 5px;
 	padding: 0 20px;
@@ -46,8 +80,7 @@ export const SearchInput = styled.input`
 	font-weight: 700;
 	transition: all 0.2s ease-in-out;
 	outline: none;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-
+	border: none;
 	@media (max-width: 1025px) {
 		width: 35%;
 	}
