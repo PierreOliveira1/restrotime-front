@@ -1,15 +1,17 @@
 import * as Styles from './styles';
 import { BiTrash } from 'react-icons/bi';
 import { MdModeEdit } from 'react-icons/md';
-import { Restaurant } from '@/modules/Restaurants/dto/restaurant';
+import { Restaurant } from '@/dto/restaurant';
 import { memo, useState } from 'react';
 import { ModalDelete } from '../ModalDelete';
+import { useNavigate } from 'react-router-dom';
 
 interface CardProps {
 	restaurant: Restaurant;
 }
 
 function CardRestaurantComponent({ restaurant }: CardProps) {
+	const navigate = useNavigate();
 	const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
 
 	return (
@@ -26,7 +28,7 @@ function CardRestaurantComponent({ restaurant }: CardProps) {
 					<Styles.Button
 						onClick={(e) => {
 							e.stopPropagation();
-							alert('Button Info');
+							navigate(`/restaurante/${restaurant.id}`);
 						}}
 					>
 						<MdModeEdit size={25} style={{ color: 'hsl(0 0% 46%)' }} />

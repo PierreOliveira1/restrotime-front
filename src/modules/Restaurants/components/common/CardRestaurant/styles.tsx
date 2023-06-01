@@ -26,6 +26,7 @@ export const Content = styled.div`
 	}
 
 	& > div:first-child > div > h3 {
+		width: 100%;
 		font-size: 16px;
 		font-weight: 600;
 		color: #000;
